@@ -12,9 +12,9 @@
 
 ## 内容
 
-- 30 个策略组，地区组用节点名正则筛选（`[Remote Filter]`）。
-- 43 个订阅规则集，来自 [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) 的 `classical/*.list`。
-- 本地规则：家庭网段、私网、`GEOIP,CN`，以及 Cloudflare / Google / Telegram 的 `IP-ASN`。
+- 32 个策略组，地区组用节点名正则筛选（`[Remote Filter]`）。
+- 47 个订阅规则集，来自 [MetaCubeX/meta-rules-dat](https://github.com/MetaCubeX/meta-rules-dat) 的 `classical/*.list`。
+- 本地规则：家庭网段、私网、`GEOIP,CN`，以及 Cloudflare / Google / Telegram / X / Meta 的 `IP-ASN`。
 - `192.168.50.0/24` 不在 `skip-proxy` / `bypass-tun` 里，由规则交给「🏚️ 内网节点」。
 
 ## 来源与许可

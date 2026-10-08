@@ -68,6 +68,8 @@ F-落地 = NameRegex, FilterKey = "RESIDENTIAL|家宽"
 Ⓜ️ 微软服务 = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 🍏 苹果服务 = select,DIRECT,🚀 节点选择,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 📲 电报消息 = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
+🐦 推特/X = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
+📘 Meta 系 = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 🎮 Steam = select,DIRECT,🚀 节点选择,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 🖥️ PC 游戏 = select,DIRECT,🚀 节点选择,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 🎯 主机游戏 = select,DIRECT,🚀 节点选择,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
@@ -121,6 +123,14 @@ IP-ASN,59930,📲 电报消息,no-resolve
 IP-ASN,62014,📲 电报消息,no-resolve
 IP-ASN,211157,📲 电报消息,no-resolve
 IP-ASN,44907,📲 电报消息,no-resolve
+# twitter-ip
+IP-ASN,13414,🐦 推特/X,no-resolve
+IP-ASN,35995,🐦 推特/X,no-resolve
+IP-ASN,63179,🐦 推特/X,no-resolve
+# facebook-ip
+IP-ASN,32934,📘 Meta 系,no-resolve
+IP-ASN,63293,📘 Meta 系,no-resolve
+IP-ASN,54115,📘 Meta 系,no-resolve
 FINAL,🐟 漏网之鱼
 
 [Remote Rule]
@@ -139,6 +149,10 @@ https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/clas
 https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/netlify.list, policy=☁️ 云服务, tag=netlify, enabled=true
 https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/google.list, policy=🔍 谷歌服务, tag=google, enabled=true
 https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/telegram.list, policy=📲 电报消息, tag=telegram, enabled=true
+https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/twitter.list, policy=🐦 推特/X, tag=twitter, enabled=true
+https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/facebook.list, policy=📘 Meta 系, tag=facebook, enabled=true
+https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/instagram.list, policy=📘 Meta 系, tag=instagram, enabled=true
+https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/whatsapp.list, policy=📘 Meta 系, tag=whatsapp, enabled=true
 https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/github.list, policy=🐱 代码托管, tag=github, enabled=true
 https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/gitlab.list, policy=🐱 代码托管, tag=gitlab, enabled=true
 https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/classical/atlassian.list, policy=🐱 代码托管, tag=atlassian, enabled=true
