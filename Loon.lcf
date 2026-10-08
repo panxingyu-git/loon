@@ -8,8 +8,7 @@
 
 [General]
 # 在家连上指定 Wi-Fi 时整体切到直连（交给旁路由代理），其余网络按规则分流。
-# 把 SSID 换成家里 Wi-Fi 的名字后去掉行首的 #；多个 Wi-Fi 就多写几组。
-# ssid-trigger="家里WiFi名":DIRECT,"cellular":RULE,"default":RULE
+ssid-trigger="宝宝巴士":DIRECT,"宝宝巴士_5G":DIRECT,"cellular":RULE,"default":RULE
 ip-mode=v4-only
 ipv6-vif=off
 dns-server=system
