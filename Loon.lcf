@@ -4,7 +4,6 @@
 #
 # 相对可莉模板的改动：
 # - skip-proxy / bypass-tun 把 192.168.0.0/16 拆开，放出 192.168.50.0/24，让回家规则能接管该网段。
-# - skip-proxy 去掉 *.local，交给规则处理。
 
 [General]
 # 在家连上指定 Wi-Fi 时整体切到直连（交给旁路由代理），其余网络按规则分流。
@@ -28,7 +27,7 @@ proxy-test-url=http://www.gstatic.com/generate_204
 resource-parser=https://raw.githubusercontent.com/sub-store-org/Sub-Store/release/sub-store-parser.loon.min.js
 geoip-url=https://geodata.kelee.one/Country-Masaiki.mmdb
 ipasn-url=https://geodata.kelee.one/GeoLite2-ASN-P3TERX.mmdb
-skip-proxy=192.168.0.0/19, 192.168.32.0/20, 192.168.48.0/23, 192.168.51.0/24, 192.168.52.0/22, 192.168.56.0/21, 192.168.64.0/18, 192.168.128.0/17, 10.0.0.0/8, 172.16.0.0/12, localhost, e.crashlynatics.com
+skip-proxy=192.168.0.0/19, 192.168.32.0/20, 192.168.48.0/23, 192.168.51.0/24, 192.168.52.0/22, 192.168.56.0/21, 192.168.64.0/18, 192.168.128.0/17, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, e.crashlynatics.com
 bypass-tun=10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/19, 192.168.32.0/20, 192.168.48.0/23, 192.168.51.0/24, 192.168.52.0/22, 192.168.56.0/21, 192.168.64.0/18, 192.168.128.0/17, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32
 
 [Proxy]
@@ -59,7 +58,7 @@ F-内网 = NameRegex, FilterKey = "\[公网\]HOME"
 🇹🇼 台湾节点 = url-test,F-台湾,url = http://www.gstatic.com/generate_204,interval = 300
 🇺🇳 欧洲节点 = select,F-欧洲
 ✴️ 家宽节点 = select,F-家宽
-🏚️ 内网节点 = select,DIRECT,F-内网
+🏚️ 内网节点 = select,F-内网,DIRECT
 🤖 AI 服务 = select,✴️ 家宽节点,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点
 📹 油管视频 = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 🔍 谷歌服务 = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
@@ -84,7 +83,6 @@ F-内网 = NameRegex, FilterKey = "\[公网\]HOME"
 # 本地规则优先于订阅规则；域名请求先匹配全部域名规则，未命中才匹配 IP 规则。
 DOMAIN-SUFFIX,panxingyu.vip,🏠 私有网络
 IP-CIDR,192.168.50.0/24,🏚️ 内网节点,no-resolve
-DOMAIN-SUFFIX,local,🏚️ 内网节点
 # private-ip
 IP-CIDR,0.0.0.0/8,🏠 私有网络,no-resolve
 IP-CIDR,10.0.0.0/8,🏠 私有网络,no-resolve
