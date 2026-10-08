@@ -36,18 +36,17 @@ bypass-tun=10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12
 # 导入后在「配置 → 订阅节点」添加，不要把订阅地址写进本仓库。
 
 [Remote Filter]
-F-全部 = NameRegex, FilterKey = "^(?!.*(剩余|距离|HOME|ATT-RESIDENTIAL|QQPW家宽))"
+F-全部 = NameRegex, FilterKey = "^(?!.*(剩余|距离|HOME|RESIDENTIAL|家宽))"
 F-美国中转 = NameRegex, FilterKey = "DMIT中转|DMIT-US|Vmiss|US-SH-|DMIT-RELAY"
 F-香港 = NameRegex, FilterKey = "HK-"
 F-日本 = NameRegex, FilterKey = "JP-"
-F-美国 = NameRegex, FilterKey = "^(?!.*(ATT-RESIDENTIAL|QQPW家宽)).*🇺🇸"
+F-美国 = NameRegex, FilterKey = "^(?!.*(RESIDENTIAL|家宽)).*🇺🇸"
 F-新加坡 = NameRegex, FilterKey = "SG-"
 F-台湾 = NameRegex, FilterKey = "TW-"
 F-欧洲 = NameRegex, FilterKey = "(DE|UK|NL|FR|CH|RU)-"
 F-家宽 = NameRegex, FilterKey = "TW-Go-01-Hinet|JP-SH-11-Kddi|HK-Go-12-iCable|US-SH-09-Cox|HK-Go-03-HGC|HK-Go-02-HKT"
 F-内网 = NameRegex, FilterKey = "\[公网\]HOME"
-F-ATT住宅 = NameRegex, FilterKey = "ATT-RESIDENTIAL"
-F-QQPW家宽 = NameRegex, FilterKey = "QQPW家宽"
+F-落地 = NameRegex, FilterKey = "RESIDENTIAL|家宽"
 
 [Proxy Group]
 🚀 节点选择 = select,⚡ 自动选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
@@ -59,10 +58,9 @@ F-QQPW家宽 = NameRegex, FilterKey = "QQPW家宽"
 🇸🇬 新加坡节点 = url-test,F-新加坡,url = http://www.gstatic.com/generate_204,interval = 300
 🇹🇼 台湾节点 = url-test,F-台湾,url = http://www.gstatic.com/generate_204,interval = 300
 🇺🇳 欧洲节点 = select,F-欧洲
-✴️ 家宽节点 = select,ATT住宅链,QQPW家宽链,F-家宽
-# 两个链式落地节点各包一层，供 [Proxy Chain] 引用
-ATT落地 = select,F-ATT住宅
-QQPW落地 = select,F-QQPW家宽
+✴️ 家宽节点 = select,🔗 家宽链,F-家宽
+# 链式落地：名字含 RESIDENTIAL 或 家宽 的订阅节点自动进这个组，在这里选落地节点
+🛬 链式落地 = select,F-落地
 🏚️ 内网节点 = select,F-内网,DIRECT
 🤖 AI 服务 = select,✴️ 家宽节点,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点
 📹 油管视频 = select,🚀 节点选择,DIRECT,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
@@ -85,9 +83,8 @@ QQPW落地 = select,F-QQPW家宽
 🛑 广告拦截 = select,REJECT,DIRECT,🚀 节点选择,🇭🇰 香港节点,🇯🇵 日本节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇹🇼 台湾节点,🇺🇳 欧洲节点,✴️ 家宽节点
 
 [Proxy Chain]
-# 对应 Clash 的 dialer-proxy：先经「🇺🇸 美国中转」里选中的节点，再到落地节点。
-ATT住宅链 = 🇺🇸 美国中转,ATT落地,udp=true
-QQPW家宽链 = 🇺🇸 美国中转,QQPW落地,udp=true
+# 对应 Clash 的 dialer-proxy：先经「🇺🇸 美国中转」里选中的节点，再到「🛬 链式落地」里选中的节点。
+🔗 家宽链 = 🇺🇸 美国中转,🛬 链式落地,udp=true
 
 [Rule]
 # 本地规则优先于订阅规则；域名请求先匹配全部域名规则，未命中才匹配 IP 规则。
